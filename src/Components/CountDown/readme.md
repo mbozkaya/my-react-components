@@ -4,8 +4,8 @@ Style Reference : [CSSTricks](https://css-tricks.com/how-to-create-an-animated-c
 
 image-1
 
-![][https://github.com/mbozkaya/MyReactComponents/tree/master/src/Components/count1.jpg]
+![alt text](https://raw.githubusercontent.com/mbozkaya/MyReactComponents/master/src/Components/CountDown/counter1.png "Logo image-1")
 
 image-2
 
-![][https://github.com/mbozkaya/MyReactComponents/tree/master/src/Components/count2.jpg]
+![alt text]( https://raw.githubusercontent.com/mbozkaya/MyReactComponents/master/src/Components/CountDown/counter2.jpg "Logo image-2")
