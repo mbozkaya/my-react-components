@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 const CountDownFunctional = props => {
     const { x, y, r, maxMinute, begin, end, dangerZoneMinute, onTimeEnd } = props;
-    const perimether = 2 * 3.14 * r;;
+    const perimether = 2 * 3.14 * r;
     let interval = useRef(null);
     const [state, setState] = useState({
         time: end - begin,
@@ -23,19 +23,19 @@ const CountDownFunctional = props => {
             hour = parseInt(time / (1000 * 60 * 60));
             totalMinute = parseInt(time / (1000 * 60));
 
-            color = dangerZoneMinute && totalMinute >= dangerZoneMinute ? 'red' : 'green';
             isEnd = totalMinute >= maxMinute;
+            color = dangerZoneMinute && isEnd ? 'red' : 'green';
 
             if (!isEnd) {
                 minute = totalMinute % 60;
                 second = parseInt(time / 1000) % 60;
-                dasharray = (360 / 60 * totalMinute) * (perimether / 360);
+                dasharray = ((time / 1000) / (maxMinute * 60)) * perimether;
             } else {
-                dasharray = 360;
+                dasharray = perimether;
             }
 
             if (isEnd && onTimeEnd) {
-                clearInterval(interval);
+                clearInterval(interval.current);
                 onTimeEnd(interval);
             }
 
@@ -54,7 +54,7 @@ const CountDownFunctional = props => {
 
     return (
         <>
-            <div className="base-timer" title={maxMinute - state.minute < 0 ? "Süre Bitti" : `${maxMinute - state.minute} min`}>
+            <div className="base-timer" title={state.isEnd ? "Süre Bitti" : `${maxMinute - state.minute} min`}>
                 <svg className="base-timer__svg" viewBox="0 0 100 100">
                     <g className="base-timer__circle">
                         <circle className="base-timer__path-elapsed" cx={x} cy={y} r={r}></circle>
